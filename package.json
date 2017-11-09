@@ -1,0 +1,23 @@
+{
+  "name": "six-pack-manager",
+  "version": "1.0.0",
+  "description": "Gym Manager made in node",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dwadolary/SixPackManager.git"
+  },
+  "keywords": [
+    "gym",
+    "manager"
+  ],
+  "author": "Dominik Krawiec",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dwadolary/SixPackManager/issues"
+  },
+  "homepage": "https://github.com/dwadolary/SixPackManager#readme"
+}
