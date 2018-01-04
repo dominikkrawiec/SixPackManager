@@ -1,0 +1,34 @@
+
+<div class="page-topbar">
+  <h2 class="page-header">Karnety</h2>
+
+  <a href="../karnety/add" class="header-button">
+    <button class="btn btn-default">Add new</button>
+  </a>
+</div>
+
+
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Kwota</th>
+      <th scope="col">Data Rozpoczęcia</th>
+      <th scope="col">Data Zakończenia</th>
+    </tr>
+  </thead>
+  <tbody>
+
+    {{#if karnety}}
+          {{#each karnety}}
+          <tr>
+            <td>{{amount}}</td>
+            <td>{{start}}</td>
+            <td>{{end}}</td>
+          </tr>
+          {{/each}}
+    {{/if}}
+
+
+  </tbody>
+</table>

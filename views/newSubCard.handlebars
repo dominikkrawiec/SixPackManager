@@ -1,0 +1,32 @@
+<h2 class="page-header">Order new subscription card</h2>
+
+<form action="./add" method="post">
+
+<h3>Pick your subscription</h3>
+  <select id="card-order-select" class="form-control">
+ <option value="1">1 month</option>
+ <option value="3">3 month</option>
+ <option value="6">6 month</option>
+ <option value="12">12 month</option>
+</select>
+
+<h3>Your Subscription Card's price:</h3>
+ <input type="text" id="card-order-price" class="form-control" disabled></input>
+
+ <button type="submit" class="btn btn-default">Submit</button>
+
+</form>
+
+
+<script>
+
+var selectInput = document.querySelector('#card-order-select');
+
+selectInput.onchange = function(){
+  var cardPrice = document.querySelector('#card-order-price');
+  var selectInput = document.querySelector('#card-order-select');
+
+  cardPrice.value = selectInput.value * 10 + '$' ;
+}
+
+</script>
