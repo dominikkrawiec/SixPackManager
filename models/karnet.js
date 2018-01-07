@@ -1,6 +1,8 @@
 var mongoose = require('mongoose');
 var Schema = require('mongoose').Schema;
+var moment = require('moment');
 
+moment().format();
 
 var SubscruptionCardSchema = mongoose.Schema({
   user: {
@@ -29,21 +31,20 @@ module.exports.getByUserId = function(id, callback){
   Karnet.find({ user: id}, callback);
 }
 
+
+
 module.exports.addNewSubCard = function(userId, months, price, callback){
-
-  var orderDate = new Date(),
-  subCardEndDate = new Date().setMonth(orderDate.getMonth() + months);
-
-  console.log(orderDate + ' ' + subCardEndDate);
+  var orderDate = moment();
+  subCardEndDate = moment().add(months, 'months');
 
   var subCard = new Karnet({
     user: userId,
     amount: price,
-    dataStart: orderDate,
+    dataStart: moment(),
     dataEnd: subCardEndDate
   });
 
-  subCard.save(function(err){
+subCard.save(function(err){
   //  if (err) return console.error(err);
   });
 

@@ -1,5 +1,6 @@
 var express = require('express'),
 router = express.Router();
+var moment = require('moment');
 
 var Karnet = require('../models/karnet.js');
 
@@ -18,13 +19,14 @@ router.get('/', ensureAuthenticated, function(req, res){
   Karnet.getByUserId(req.user.id, function(err, rslt){
 
       for(var i = 0; i < rslt.length; i++){
-        rslt[i].dayStart = rslt[i].dataStart.getDay();
-        rslt[i].monthStart = rslt[i].dataStart.getMonth();
+        rslt[i].dayStart = rslt[i].dataStart.getDate();
+        rslt[i].monthStart = rslt[i].dataStart.getMonth() + 1;
         rslt[i].yearStart = rslt[i].dataStart.getFullYear();
+        console.log('Day:' + rslt[i].dataStart);
 
         rslt[i].start = rslt[i].dayStart + '-' + rslt[i].monthStart + '-' +rslt[i].yearStart
 
-        rslt[i].dayEnd = rslt[i].dataEnd.getDay();
+        rslt[i].dayEnd = rslt[i].dataEnd.getDate();
         rslt[i].monthEnd = rslt[i].dataEnd.getMonth() + 1;
         rslt[i].yearEnd = rslt[i].dataEnd.getFullYear();
 
@@ -45,7 +47,7 @@ router.get('/add', ensureAuthenticated, function(req, res){
 
 router.post('/add', function(req,res){
   var months = req.body.months,
-      price = req.body.price,
+      price = months * 10;
       callbck = function(){
         res.redirect('/karnety');
       }

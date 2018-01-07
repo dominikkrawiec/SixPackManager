@@ -3,7 +3,7 @@
 <form action="./add" method="post">
 
 <h3>Pick your subscription</h3>
-  <select id="card-order-select" class="form-control">
+  <select id="card-order-select" class="form-control" name="months">
  <option value="1">1 month</option>
  <option value="3">3 month</option>
  <option value="6">6 month</option>
@@ -11,7 +11,7 @@
 </select>
 
 <h3>Your Subscription Card's price:</h3>
- <input type="text" id="card-order-price" class="form-control" disabled></input>
+ <input type="text" id="card-order-price" class="form-control" name="price" disabled></input>
 
  <button type="submit" class="btn btn-default">Submit</button>
 
