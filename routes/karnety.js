@@ -6,34 +6,11 @@ var Karnet = require('../models/karnet.js');
 
 router.get('/', ensureAuthenticated, function(req, res){
 
+Karnet.getByUserId(req.user.id, function(err, rslt){
 
-  /* var karnet1 = new Karnet({
-    user: req.user.id,
-    amount: 30,
-    dataStart: new Date,
-    dataEnd: new Date
-  }); */
+  rslt = Karnet.convertDate(rslt);
 
-  //karnet1.save();
-
-  Karnet.getByUserId(req.user.id, function(err, rslt){
-
-      for(var i = 0; i < rslt.length; i++){
-        rslt[i].dayStart = rslt[i].dataStart.getDate();
-        rslt[i].monthStart = rslt[i].dataStart.getMonth() + 1;
-        rslt[i].yearStart = rslt[i].dataStart.getFullYear();
-        console.log('Day:' + rslt[i].dataStart);
-
-        rslt[i].start = rslt[i].dayStart + '-' + rslt[i].monthStart + '-' +rslt[i].yearStart
-
-        rslt[i].dayEnd = rslt[i].dataEnd.getDate();
-        rslt[i].monthEnd = rslt[i].dataEnd.getMonth() + 1;
-        rslt[i].yearEnd = rslt[i].dataEnd.getFullYear();
-
-        rslt[i].end= rslt[i].dayEnd + '-' + rslt[i].monthEnd + '-' +rslt[i].yearEnd
-      }
-
-    res.render('karnety', {
+  res.render('karnety', {
       karnety : rslt
     });
   });
