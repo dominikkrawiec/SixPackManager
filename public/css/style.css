@@ -104,3 +104,12 @@ button {
 footer{
   margin-top:40px;
 }
+
+
+/* SubCard ordering */
+.order-details {
+  display: none;
+  padding: 30px;
+  border: 1px solid skyblue;
+  border-radius: 15px;
+}

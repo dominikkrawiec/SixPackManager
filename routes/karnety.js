@@ -25,8 +25,8 @@ router.get('/add', ensureAuthenticated, function(req, res){
 router.post('/add', function(req,res){
   var months = req.body.months,
       price = months * 10;
-      callbck = function(){
-        res.redirect('/karnety');
+      callbck = function(subcardId){
+        res.redirect('/payment/' + price + '/USD/' +  subcardId + '/' + req.user.id);
       }
 
     Karnet.addNewSubCard(req.user.id, months, price, callbck);

@@ -20,16 +20,49 @@ router.get('/subcards', ensureAuthenticated, function(req, res) {
 router.post('/subcards', ensureAuthenticated, function(req, res) {
   var cards = Karnet.getByEmail(req.body.email, function(err, cards){
     if(err) throw err;
-    console.log(cards)
 
     var convertedCards = Karnet.convertDate(cards);
-    return convertedCards;
+    res.render('admin/list', {
+      cards : convertedCards
+    });
+
   });
 
 
-    res.render('admin/list', {
-      cards : cards
-    });
+});
+
+router.get('/subcards/activate/:user/:subcard', ensureAuthenticated, function(req, res) {
+  var subcardId = req.params.subcard;
+
+  Karnet.activate(subcardId, function(err){
+    if(err) throw err;
+
+    Karnet.getByUserId(req.params.user, function(err, rslt){
+      rslt = Karnet.convertDate(rslt);
+      console.log(rslt);
+      res.render('admin/list', {
+          cards : rslt,
+          msg: 'Item have been activated successfully!'
+        });
+    })
+  });
+});
+
+router.get('/subcards/remove/:user/:subcard', ensureAuthenticated, function(req, res) {
+  var subcardId = req.params.subcard;
+
+  Karnet.remove(subcardId, function(err){
+    if(err) throw err;
+
+    Karnet.getByUserId(req.params.user, function(err, rslt){
+      rslt = Karnet.convertDate(rslt);
+      console.log(rslt);
+      res.render('admin/list', {
+          cards : rslt,
+          msg: 'Item have been removed successfully!'
+        });
+    })
+  });
 });
 
 
@@ -44,7 +77,7 @@ function ensureAuthenticated(req, res, next){
 
 function requireAdmin(){
   return function(req, res, next) {
-    if (req.user.username != 'admin') {
+    if (req.user == null || req.user.username != 'admin' ) {
       res.redirect('/');
     } else {
       next();

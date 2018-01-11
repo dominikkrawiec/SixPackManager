@@ -37,13 +37,13 @@ module.exports.getByUserId = function(id, callback){
 
 module.exports.getByEmail = function(email, callback){
 //get User Id by Email
-
   var User = require('../models/user');
   User.getUserByEmail(email, function(err, user){
     if(err) throw err;
-    
-    //var userId = user._id;
-    Karnet.find({ user: userId}, callback);
+
+  var userId = user._id;
+  console.log('User: ' + userId);
+  Karnet.find({user: userId}, callback);
 
   });
 
@@ -62,11 +62,14 @@ module.exports.addNewSubCard = function(userId, months, price, callback){
     status: 'Unpaid'
   });
 
-subCard.save(function(err){
-  //  if (err) return console.error(err);
+var subcardId = subCard.save(function(err, card){
+  if (err) throw error;
+  callback(card._id);
   });
 
-  callback();
+
+
+
 
 }
 
@@ -84,7 +87,40 @@ module.exports.convertDate = function(rslt){
     rslt[i].yearEnd = rslt[i].dataEnd.getFullYear();
 
     rslt[i].end = rslt[i].dayEnd + '-' + rslt[i].monthEnd + '-' +rslt[i].yearEnd
+
+   // change action link
+    if(rslt[i].status == 'Unpaid') {
+      rslt[i].actionMsg = 'Activate';
+      rslt[i].actionLink = '/activate/' + rslt[i].user + '/' + rslt[i]._id;
+
+    } else {
+      rslt[i].actionMsg = 'Unactivate';
+      rslt[i].actionLink = '/unactivate/' + rslt[i].user + '/' + rslt[i]._id;
+    }
+
+      rslt[i].removeLink = '/remove/' + rslt[i].user + '/' + rslt[i]._id;
+      rslt[i].removeMsg = 'Remove';
   }
 
+
     return rslt;
+}
+
+module.exports.activate = function(subcardId, callback){
+  console.log(subcardId)
+  var query = { '_id' : subcardId};
+  var update = { 'status': 'Active'};
+  Karnet.findOneAndUpdate(query, update , {upsert:true}, callback);
+
+}
+
+module.exports.remove = function(subcardId, callback){
+  console.log(subcardId)
+
+  Karnet.findById(subcardId, function (err, doc) {
+    if (err) throw err;
+
+    doc.remove(callback); //Removes the document
+})
+
 }

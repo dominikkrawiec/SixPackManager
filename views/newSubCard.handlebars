@@ -13,7 +13,13 @@
 <h3>Your Subscription Card's price:</h3>
  <input type="text" id="card-order-price" class="form-control" name="price" disabled></input>
 
- <button type="submit" class="btn btn-default">Submit</button>
+ <div class="btn btn-default"  id="step1">Submit</div>
+
+   <div class="order-details" id="order-details">
+     <h3><span id="subcard"></span> subscription card</h3>
+     <p>Total: <span id="subcard-price"></span></p>
+     <button type="submit" class="btn btn-default">Pay Now</button>
+   </div>
 
 </form>
 
@@ -28,5 +34,21 @@ selectInput.onchange = function(){
 
   cardPrice.value = selectInput.value * 10 + '$' ;
 }
+
+var step1 = document.querySelector('#step1');
+
+step1.addEventListener('click', function(){
+
+  console.log('dgdfg');
+  var selectInput = document.querySelector('#card-order-select');
+
+  document.querySelector('#order-details').style.display = 'block';
+
+  document.querySelector('#subcard').innerHTML = selectInput.value + ' months';
+
+  document.querySelector('#subcard-price').innerHTML = document.querySelector('#card-order-price').value;
+
+
+});
 
 </script>

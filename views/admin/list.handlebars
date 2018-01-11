@@ -7,6 +7,12 @@
   </a>
 </div>
 
+{{#if msg}}
+<div class="alert alert-success">
+  {{msg}}
+</div>
+  {{/if}}
+
 
 
 <table class="table table-striped">
@@ -16,6 +22,7 @@
       <th scope="col">Data Rozpoczęcia</th>
       <th scope="col">Data Zakończenia</th>
       <th scope="col">Status</th>
+      <th scope="col">Action</th>
     </tr>
   </thead>
   <tbody>
@@ -27,6 +34,12 @@
             <td>{{start}}</td>
             <td>{{end}}</td>
             <td>{{status}}</td>
+            <td>
+              <a href="/admin/subcards{{actionLink}}">
+              {{actionMsg}}</a>
+              <a href="/admin/subcards{{removeLink}}">
+              {{removeMsg}}</a>
+            </td>
           </tr>
           {{/each}}
     {{/if}}
