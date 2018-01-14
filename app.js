@@ -19,6 +19,7 @@ var users = require('./routes/users');
 var karnety = require('./routes/karnety');
 var admin = require('./routes/admin');
 var payment = require('./routes/paypal');
+var calendar = require('./routes/calendar');
 
 // Init App
 var app = express();
@@ -82,6 +83,7 @@ app.use('/users', users);
 app.use('/karnety', karnety);
 app.use('/admin', admin);
 app.use('/payment', payment);
+app.use('/calendar', calendar);
 
 // Set Port
 app.set('port', (process.env.PORT || 3000));

@@ -56,7 +56,6 @@ router.get('/subcards/remove/:user/:subcard', ensureAuthenticated, function(req,
 
     Karnet.getByUserId(req.params.user, function(err, rslt){
       rslt = Karnet.convertDate(rslt);
-      console.log(rslt);
       res.render('admin/list', {
           cards : rslt,
           msg: 'Item have been removed successfully!'

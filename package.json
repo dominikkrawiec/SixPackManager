@@ -19,6 +19,8 @@
     "express-messages": "*",
     "express-session": "*",
     "express-validator": "*",
+    "google-auth-library": "^0.12.0",
+    "googleapis": "^24.0.0",
     "mongodb": "*",
     "mongoose": "*",
     "passport": "*",

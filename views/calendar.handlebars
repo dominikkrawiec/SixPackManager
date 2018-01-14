@@ -1,0 +1,38 @@
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.8.0/fullcalendar.min.css" />
+<link rel="stylehseet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.8.0/fullcalendar.print.css" / >
+
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="http://momentjs.com/downloads/moment.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.8.0/fullcalendar.min.js"></script>
+
+<div id="calendar">
+
+<script>
+       // page is now ready, initialize the calendar..
+       $('#calendar').fullCalendar({
+           // put your options and callbacks here
+           googleCalendarApiKey: ' AIzaSyCnMr2QueinPYwdZ0p5byxTQg6L_EtjlOA',
+        events: [
+          {{#each events}}
+          {
+            url: '../calendar/event/{{id}}',  
+            start: '{{start}}',
+            end: '{{end}}',
+            title:' {{summary}}'
+          },
+          {{/each}}
+        ]
+
+       })
+</script>
+
+
+
+
+
+</div>
+
+<script>
+
+</script>
