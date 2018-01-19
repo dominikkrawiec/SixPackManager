@@ -1,6 +1,17 @@
 
 <h2 class="page-header">Welcome to the dashboard, Captain!</h2>
 
+
+{{#if stats}}
+  Registered users:
+  {{stats.users}}
+
+  Subcards this month:
+  {{stats.cards}}
+
+{{/if}}
+
+
 <ul>
   <li>
     <a href="../admin/subcards">Karnety</a>

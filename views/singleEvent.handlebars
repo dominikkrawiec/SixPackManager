@@ -1,0 +1,21 @@
+<div class="page-topbar">
+  <h2 class="page-header">Event Details</h2>
+
+  {{#if event }}
+    {{#each event }}
+      {{#if status }}
+      <a href="../event/{{actionBtn}}/{{eventId}}" class="header-button">
+      <button class="btn btn-default">{{status}}</button>
+      </a>
+      {{/if}}
+</div>
+
+
+   <h3>{{ name }}</h3>
+   <h4>{{ dataStart }}</h4>
+   <div>
+     {{description}}
+   </div>
+  {{/each}}
+
+{{/if}}

@@ -2,13 +2,26 @@ var express = require('express'),
 router = express.Router();
 
 var Karnet = require('../models/karnet.js');
+var User = require('../models/user.js');
 
 router.get('/', requireAdmin(), ensureAuthenticated, function(req, res){
 
-      res.render('admin', {
+      /* Staticstics */
+      User.getUsersCount(function(err, count){
+        if(err) throw err;
 
+        Karnet.getSubCardsByMonth(function(err, cards){
+          if(err) throw err;
+
+          res.render('admin', {
+            stats: {
+              users: count,
+              cards: cards
+            }
+          });
+
+        });
       });
-
 });
 
 router.get('/subcards', ensureAuthenticated, function(req, res) {

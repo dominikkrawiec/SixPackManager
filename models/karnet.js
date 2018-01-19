@@ -124,3 +124,21 @@ module.exports.remove = function(subcardId, callback){
 })
 
 }
+
+/* Admin Staticstics */
+
+module.exports.getSubCardsByMonth = function(callback){
+  var month = moment().month();
+  var year = moment().year();
+
+  start = moment().date('1').month(month).year(year);
+  end = moment().date('29').month(month).year(year);
+
+  console.log(start.toString() + ' ::: ' + end.toString());
+   Karnet.count({ dataStart:
+    {
+      $gte: start,
+      $lt: end
+    }
+  }, callback);
+}

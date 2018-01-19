@@ -6,7 +6,7 @@
 <script src="http://momentjs.com/downloads/moment.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.8.0/fullcalendar.min.js"></script>
 
-<h3 class="page-header">Zbliżające się wydarzenia</h3>
+<h3 class="page-header">Twój kalendarz</h3>
 
 <div id="calendar">
 
@@ -18,7 +18,7 @@
         events: [
           {{#each events}}
           {
-            url: '../calendar/event/{{id}}',
+            url: '../event/{{eventId}}',
             start: '{{start}}',
             end: '{{end}}',
             title:' {{summary}}'

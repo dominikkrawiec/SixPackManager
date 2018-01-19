@@ -55,3 +55,9 @@ module.exports.comparePassword = function(candidatePassword, hash, callback){
     	callback(null, isMatch);
 	});
 }
+
+/* Admin functions */
+
+module.exports.getUsersCount = function(callback){
+		User.count({}, callback);
+}
