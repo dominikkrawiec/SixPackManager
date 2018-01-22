@@ -10,6 +10,10 @@ var SubscruptionCardSchema = mongoose.Schema({
     ref: 'User'
    },
 
+   gymId: {
+
+   },
+
   amount : {
     type: Number,
     min: 0

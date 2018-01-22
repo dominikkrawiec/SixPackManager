@@ -1,0 +1,66 @@
+
+    <div class="col-lg-10">
+      {{#if errors }}
+{{#each errors}}
+<div class="alert alert-danger"> {{ msg }}</div>
+{{/each}}
+{{/if}}
+
+{{#if msg }}
+<div class="alert alert-success"> {{ msg }} </div>
+{{/if}}
+</div>
+</div>
+
+<div class="row">
+
+  <!-- Edit profile -->
+  <div class="col-md-6">
+    <div class="registration-card mdl-card mdl-shadow--6dp">
+    <div class="mdl-card__title">
+      <h2 class="mdl-card__title-text">Edytuj profil</h2>
+    </div>
+    <div class="mdl-card__supporting-text">
+      <form method="post" action="/users/profile">
+         <div class="form-group">
+          <label>Name</label>
+          <input type="text" class="form-control" value="{{name}}" name="name">
+        </div>
+        <div class="form-group">
+          <label>Username</label>
+          <input type="text" class="form-control" value="{{username}}" name="username" disabled>
+        </div>
+         <div class="form-group">
+          <label>Email</label>
+          <input type="email" class="form-control" value="{{email}}" name="email">
+        </div>
+        <div class="form-group">
+          <label>Password</label>
+          <input type="password" class="form-control" placeholder="New password here" name="password">
+        </div>
+        <div class="form-group">
+          <label>Confirm Password</label>
+          <input type="password" class="form-control" placeholder="Confirm password" name="password2">
+        </div>
+        <button type="submit" class="btn btn-default">Save</button>
+      </form>
+    </div>
+  </div>
+  </div>
+
+  <!-- Create Gym -->
+  <div class="col-md-5">
+    <div class="new-gym-card mdl-card mdl-shadow--6dp">
+      <div class="mdl-card__title">Are you a gym owner?</div>
+      <div class="mdl-card__supporting-text">
+        Create page for your gym and get attention!
+      </div>
+      <div class="mdl-card__actions mdl-card--border">
+        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" href="../gym/new">
+          Get Started
+        </a>
+      </div>
+  </div>
+  </div>
+
+</div>

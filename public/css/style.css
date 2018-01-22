@@ -11,6 +11,7 @@ body {
 .logo {
   padding-top: 22px;
   padding-left: 30px !important;
+  height: 70px;
 }
 
 
@@ -39,7 +40,8 @@ body {
 
 /* Registration Card */
 .registration-card.mdl-card,
-.home-card.mdl-card {
+.home-card.mdl-card,
+.new-gym-card.mdl-card {
   width: 90%;
   margin: 30px;
 }
@@ -54,3 +56,29 @@ body {
 .news {
   padding: 0 10px;
 }
+
+/* Dashboard */
+
+.topbar {
+  height: 50px;
+  background-color: white;
+  padding-left: 25px;
+  }
+
+  .topbar nav a:link,
+  .topbar nav a:visited {
+    margin: 12px;
+    font-size: 14px;
+    font-weight: bolder;
+  }
+
+  .topbar nav a:hover {
+    text-decoration: none;
+  }
+
+  .profile {
+    position: absolute !important;
+    right: 30px;
+    top: 25px;
+    color: white;
+  }

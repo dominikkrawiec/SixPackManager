@@ -8,9 +8,21 @@ var UserSchema = mongoose.Schema({
 		type: String,
 		index:true
 	},
+
+	gyms:[{
+		type: Schema.Types.ObjectId,
+		ref: 'Gym'
+	}],
+
+	followed: [{
+		type: Schema.Types.ObjectId,
+		ref: 'Gym'
+	}],
+
 	password: {
 		type: String
 	},
+
 	email: {
 		type: String
 	},
@@ -35,6 +47,24 @@ module.exports.createUser = function(newUser, callback){
 	});
 }
 
+module.exports.updateUser = function(id, user, callback){
+	bcrypt.genSalt(10, function(err, salt) {
+	    bcrypt.hash(user.password, salt, function(err, hash) {
+	        user.password = hash;
+	        User.update(
+						{_id : id},
+						{
+							name: user.name,
+							email: user.email,
+							password: hash
+						},
+						{ multi: false },
+						callback
+					);
+	    });
+	});
+}
+
 module.exports.getUserByUsername = function(username, callback){
 	var query = {username: username};
 	User.findOne(query, callback);
@@ -55,6 +85,7 @@ module.exports.comparePassword = function(candidatePassword, hash, callback){
     	callback(null, isMatch);
 	});
 }
+
 
 /* Admin functions */
 

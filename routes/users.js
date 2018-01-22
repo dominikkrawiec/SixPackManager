@@ -34,7 +34,7 @@ router.post('/register', function(req, res){
 	var errors = req.validationErrors();
 
 	if(errors){
-		res.render('register',{
+		res.render('login',{
 			errors:errors
 		});
 	} else {
@@ -97,6 +97,66 @@ router.get('/logout', function(req, res){
 	req.flash('success_msg', 'You are logged out');
 
 	res.redirect('/users/login');
+});
+
+router.get('/profile', function(req, res){
+	User.getUserById(req.user.id, function(err, data){
+		if(err) throw err;
+
+		res.render('profile', {
+			username: data.username,
+			name: data.name,
+			password: data.password,
+			email: data.email
+		});
+
+
+	});
+});
+
+router.post('/profile', function(req, res){
+	var name = req.body.name;
+	var email = req.body.email;
+	var username = req.body.username;
+	var password = req.body.password;
+	var password2 = req.body.password2;
+
+	// Validation
+	req.checkBody('name', 'Name is required').notEmpty();
+	req.checkBody('email', 'Email is required').notEmpty();
+	req.checkBody('email', 'Email is not valid').isEmail();
+	req.checkBody('password', 'Password is required').notEmpty();
+	req.checkBody('password2', 'Passwords do not match').equals(req.body.password);
+
+	var errors = req.validationErrors();
+
+	if(errors){
+		res.render('profile',{
+			errors:errors,
+			username: username,
+			name: name,
+			password: password,
+			email: email
+
+		});
+	} else {
+		var user = {
+			name: name,
+			email:email,
+			username: username,
+			password: password
+		};
+
+		User.updateUser(req.user.id, user, function(){
+			res.render('profile',{
+				msg: 'Users updated!',
+				username: user.username,
+				name: user.name,
+				password: user.password,
+				email: user.email
+			});
+		})
+	}
 });
 
 module.exports = router;

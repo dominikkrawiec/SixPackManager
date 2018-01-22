@@ -19,17 +19,47 @@
 							</div>
 							{{#if user}}
 
+							<a href="/users/profile">
+								<div class=" profile material-icons mdl-badge mdl-badge--overlap" data-badge="♥">account_box</div>
+							</a>
+
+								<div class="col-md-12 topbar">
+									<nav class="mdl-navigation">
+										<a class="mdl-navigation__link" href="/calendar">Dashboard</a>
+										<a class="mdl-navigation__link" href="/calendar">Events</a>
+										<a class="mdl-navigation__link" href="/calendar/personal">Your events</a>
+										<a class="mdl-navigation__link" href="/karnety">Subscriptions</a>
+									</nav>
+
+									</ul>
+								</div>
 								{{else}}
 								 	{{> login}}
 							{{/if}}
-						
+
 				  </header>
+			</div>
+		</div>
+
+		<div class="row">
+				<div class="col-lg-10">
+					{{#if success_msg}}
+						<div class="alert alert-success">{{success_msg}}</div>
+					{{/if}}
+
+					{{#if error_msg}}
+						<div class="alert alert-danger">{{error_msg}}</div>
+					{{/if}}
+
+					{{#if error}}
+						<div class="alert alert-danger">{{error}}</div>
+					{{/if}}
 			</div>
 		</div>
 
 			<div class="row">
 				{{#if user}}
-
+					{{{ body }}}
 					{{else}}
 						{{> register}}
 
@@ -47,26 +77,7 @@
 
 
 				<div class="col-md-10">
-					<div class="row">
-						<div class="col-lg-10 topbar">
-							{{#if success_msg}}
-								<div class="alert alert-success">{{success_msg}}</div>
-							{{/if}}
 
-							{{#if error_msg}}
-								<div class="alert alert-danger">{{error_msg}}</div>
-							{{/if}}
-
-							{{#if error}}
-								<div class="alert alert-danger">{{error}}</div>
-							{{/if}}
-
-							<div class="profile">
-
-							</div>
-					</div>
-
-					</div>
 
 					<footer class="footer">
 
