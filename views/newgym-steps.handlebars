@@ -1,0 +1,80 @@
+<div class="col-md-12 topbar adminbar">
+  <nav class="mdl-navigation col-md-6">
+    <a class="mdl-navigation__link" href="/admin">Admin Panel</a>
+    <a class="mdl-navigation__link" href="/admin/events">Manage Events</a>
+    <a class="mdl-navigation__link" href="/admin/subcards">Manage Subscriptions</a>
+    <a  class="mdl-navigation__link" href="/admin/gym/new/">New Gym</a>
+  </nav>
+
+  <div class="col-md-2">
+      <form method="post" action="../admin/subcards" class="col-md-12">
+        <div class="col-md-6">
+          <input type="text" class="subcard-search" placeholder="email" name="email" />
+          <button type="submit" class="btn btn-default">Submit</button>
+        </div>
+      </form>
+    </div>
+
+  </ul>
+</div>
+
+<div class="col-md-12">
+  <h3 class="page-header">New gym</h3>
+</div>
+
+<div class="col-md-12">
+  <div class="new-gym-card mdl-card mdl-shadow--6dp">
+
+  <div class="mdl-card__supporting-text">
+
+<form method="POST" action="/gym/new/finish" data-step="1">
+                <section class="form-section" data-step="1">
+                    <fieldset>
+                      <label for="gymname">Name</label>
+                      <input class="mdl-textfield__input" type="text" name="gymname" id="gymname" placeholder="Your gym name here" required="required"  >
+                    </fieldset>
+                  </section>
+
+                  <section class="form-section hidden" data-step="2">
+                      <fieldset>
+                        <label for="street">Street</label>
+                        <label for="city">City</label>
+                          <label for="country">Country</label>
+                        <input class="mdl-textfield__input" type="text" name="street" id="street" placeholder="Street"  required="required">
+                        <input class="mdl-textfield__input" type="text" name="city" id="city" placeholder="City" required="required">
+                        <input class="mdl-textfield__input" type="text" name="country" id="country" placeholder="Country" required="required">
+                      </fieldset>
+                    </section>
+
+                    <section class="form-section hidden" data-step="3">
+                        <fieldset>
+                          <label for="street">Street</label>
+                          <label for="city">City</label>
+                            <label for="country">Country</label>
+                          <input class="mdl-textfield__input" type="phone" name="phone" id="street" placeholder="Phone number" required="required" >
+                          <input class="mdl-textfield__input" type="email" name="email" id="email" placeholder="Email adress" required="required">
+                          <input class="mdl-textfield__input" type="url" name="site" id="site" placeholder="Website URL">
+
+                        </fieldset>
+                      </section>
+
+                      <section class="form-section hidden" data-step="4">
+                          <fieldset>
+                            <label for="street">Paste URL to image</label>
+
+                            <input class="mdl-textfield__input" type="url" name="photo" id="photo">
+
+
+                          </fieldset>
+                        </section>
+
+                        <button type="submit" class="next-step mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored" id="newgym-btn">
+                          <i class="material-icons">forward</i>
+                        </button>
+                </form>
+              </div>
+            </div>
+            </div>
+          </div>
+
+          <script src="/js/newgym.js" ></script>

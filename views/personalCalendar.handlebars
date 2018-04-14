@@ -6,9 +6,14 @@
 <script src="http://momentjs.com/downloads/moment.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.8.0/fullcalendar.min.js"></script>
 
-<section class="col-md-10">
-<h3 class="page-header">Twój kalendarz</h3>
+<div class="col-md-12">
+  <h3 class="page-header">Twój kalendarz</h3>
+</div>
 
+<section class="col-md-12">
+<div class="home-card mdl-card mdl-shadow--2dp">
+  <div class="row">
+    <div class="col-md-12">
 <div id="calendar">
 
 <script>
@@ -19,7 +24,7 @@
         events: [
           {{#each events}}
           {
-            url: '../event/{{eventId}}',
+            url: '../calendar/event/{{eventId}}',
             start: '{{start}}',
             end: '{{end}}',
             title:' {{summary}}'
@@ -29,6 +34,10 @@
 
        })
 </script>
+</div>
+</div>
+</div>
+
 </div>
 
 </section>

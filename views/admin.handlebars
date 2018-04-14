@@ -1,19 +1,57 @@
 
-<h2 class="page-header">Welcome to the dashboard, Captain!</h2>
+<div class="col-md-12 topbar adminbar">
+  <nav class="mdl-navigation">
+    <a class="mdl-navigation__link" href="/admin">Admin Panel</a>
+    <a class="mdl-navigation__link" href="/admin/events">Manage Events</a>
+    <a class="mdl-navigation__link" href="/admin/subcards">Manage Subscriptions</a>
+    <a  class="mdl-navigation__link" href="/admin/gym/new/">New Gym</a>
+  </nav>
 
+  </ul>
+</div>
 
-{{#if stats}}
-  Registered users:
-  {{stats.users}}
+  <div class="col-md-6">
+    <div class="dashboard-card mdl-card mdl-shadow--2dp">
+      <div class="mdl-card__title">
+        <h2 class="mdl-card__title-text">Welcome!</h2>
+      </div>
+      <div class="mdl-card__supporting-text">
+        It's the place where you can manage your gyms.
+      </div>
+      <div class="mdl-card__actions mdl-card--border">
+        <a href="../admin/event/new" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+          Add event
+        </a>
+      </div>
+      <div class="mdl-card__menu">
+        <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
+          <i class="material-icons">share</i>
+        </button>
+      </div>
+  </div>
+</div>
 
-  Subcards this month:
-  {{stats.cards}}
+  <div class="col-md-6">
+      <div class="col-md-12">
+          <div class="stats-card mdl-card mdl-shadow--2dp">
+            <div class="mdl-card__title mdl-card--expand">
+          <h4>
+            {{#if stats}}
+              Registered users:
+              <span class="stats-number">{{stats.users}}</span>
+              <br />
+              Subcards this month:
+              <span class="stats-number">{{stats.cards}}</span>
 
-{{/if}}
-
-
-<ul>
-  <li>
-    <a href="../admin/subcards">Karnety</a>
-  </li>
-</ul>
+            {{/if}}
+          </h4>
+        </div>
+        <div class="mdl-card__actions mdl-card--border">
+          <a  href="../admin/subcards" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+            Subscriptions
+          </a>
+          <div class="mdl-layout-spacer"></div>
+        </div>
+      </div>
+      </div>
+  </div>

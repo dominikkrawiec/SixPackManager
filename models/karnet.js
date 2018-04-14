@@ -11,7 +11,8 @@ var SubscruptionCardSchema = mongoose.Schema({
    },
 
    gymId: {
-
+     type: Schema.Types.ObjectId,
+     ref: 'Gym'
    },
 
   amount : {
@@ -36,7 +37,7 @@ var SubscruptionCardSchema = mongoose.Schema({
 var Karnet = module.exports = mongoose.model('Karnet', SubscruptionCardSchema);
 
 module.exports.getByUserId = function(id, callback){
-  Karnet.find({ user: id}, callback);
+  Karnet.find({ user: id}).populate('gymId', 'name').exec(callback);
 }
 
 module.exports.getByEmail = function(email, callback){
@@ -45,21 +46,25 @@ module.exports.getByEmail = function(email, callback){
   User.getUserByEmail(email, function(err, user){
     if(err) throw err;
 
-  var userId = user._id;
-  console.log('User: ' + userId);
-  Karnet.find({user: userId}, callback);
-
+    if(!user){
+      console.log('Email not found')
+    } else {
+      var userId = user._id;
+      console.log('User: ' + userId);
+      Karnet.find({user: userId}, callback);
+    }
   });
 
 }
 
 
-module.exports.addNewSubCard = function(userId, months, price, callback){
+module.exports.addNewSubCard = function(userId, gymId, months, price, callback){
 
   var subCardEndDate = moment().add(months, 'months');
 
   var subCard = new Karnet({
     user: userId,
+    gymId: gymId,
     amount: price,
     dataStart: moment(),
     dataEnd: subCardEndDate,
@@ -118,6 +123,14 @@ module.exports.activate = function(subcardId, callback){
 
 }
 
+module.exports.unactivate = function(subcardId, callback){
+  console.log(subcardId)
+  var query = { '_id' : subcardId};
+  var update = { 'status': 'Unpaid'};
+  Karnet.findOneAndUpdate(query, update , {upsert:true}, callback);
+
+}
+
 module.exports.remove = function(subcardId, callback){
   console.log(subcardId)
 
@@ -145,4 +158,8 @@ module.exports.getSubCardsByMonth = function(callback){
       $lt: end
     }
   }, callback);
+}
+
+module.exports.listAll = function(callback){
+  Karnet.find({}).populate('user').exec(callback);
 }

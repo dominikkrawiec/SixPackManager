@@ -1,54 +1,54 @@
-<h2 class="page-header">Order new subscription card</h2>
+<div class="col-md-12">
+  <h3 class="page-header">New subscription</h3>
+</div>
 
-<form action="./add" method="post">
+<div class="col-md-12">
+  <div class="home-card mdl-card mdl-shadow--2dp">
+      <form action="./{{id}}" method="post" class="subs-order">
 
-<h3>Pick your subscription</h3>
-  <select id="card-order-select" class="form-control" name="months">
- <option value="1">1 month</option>
- <option value="3">3 month</option>
- <option value="6">6 month</option>
- <option value="12">12 month</option>
-</select>
+      <h3>Pick your subscription</h3>
+        <select id="card-order-select" class="form-control" name="months" required>
+      <option value="1">Choose...</option>
+       <option value="1">1 month</option>
+       <option value="3">3 month</option>
+       <option value="6">6 month</option>
+       <option value="12">12 month</option>
+      </select>
 
-<h3>Your Subscription Card's price:</h3>
- <input type="text" id="card-order-price" class="form-control" name="price" disabled></input>
+      <h3>Your Subscription Card's price:</h3>
+       <input type="text" id="card-order-price" class="form-control" name="price" disabled></input>
+       <button type="submit" class="btn btn-default">Pay Now</button>
 
- <div class="btn btn-default"  id="step1">Submit</div>
-
-   <div class="order-details" id="order-details">
-     <h3><span id="subcard"></span> subscription card</h3>
-     <p>Total: <span id="subcard-price"></span></p>
-     <button type="submit" class="btn btn-default">Pay Now</button>
-   </div>
-
-</form>
+      </form>
 
 
-<script>
+      <script>
 
-var selectInput = document.querySelector('#card-order-select');
+      var selectInput = document.querySelector('#card-order-select');
 
-selectInput.onchange = function(){
-  var cardPrice = document.querySelector('#card-order-price');
-  var selectInput = document.querySelector('#card-order-select');
+      selectInput.onchange = function(){
+        var cardPrice = document.querySelector('#card-order-price');
+        var selectInput = document.querySelector('#card-order-select');
 
-  cardPrice.value = selectInput.value * 10 + '$' ;
-}
+        cardPrice.value = selectInput.value * 10 + '$' ;
+      }
 
-var step1 = document.querySelector('#step1');
+      var step1 = document.querySelector('#step1');
 
-step1.addEventListener('click', function(){
+      step1.addEventListener('click', function(){
 
-  console.log('dgdfg');
-  var selectInput = document.querySelector('#card-order-select');
+        console.log('dgdfg');
+        var selectInput = document.querySelector('#card-order-select');
 
-  document.querySelector('#order-details').style.display = 'block';
+        document.querySelector('#order-details').style.display = 'block';
 
-  document.querySelector('#subcard').innerHTML = selectInput.value + ' months';
+        document.querySelector('#subcard').innerHTML = selectInput.value + ' months';
 
-  document.querySelector('#subcard-price').innerHTML = document.querySelector('#card-order-price').value;
+        document.querySelector('#subcard-price').innerHTML = document.querySelector('#card-order-price').value;
 
 
-});
+      });
 
-</script>
+      </script>
+    </div>
+</div>

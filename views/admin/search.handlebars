@@ -1,0 +1,49 @@
+<div class="col-md-12">
+    <form method="post" action="../admin/subcards/search" class="col-md-12">
+      <div class="col-md-7">
+        <div class="form-group">
+          <input type="text" class="subcard-search form-control" placeholder="email" name="email" />
+        </div>
+      </div>
+      <div class="col-md-1">
+          <button type="submit" class="btn btn-primary">Search</button>
+      </div>
+    </form>
+  </div>
+
+  <div class="home-card mdl-card mdl-shadow--2dp">
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Kwota</th>
+        <th scope="col">Data Rozpoczęcia</th>
+        <th scope="col">Data Zakończenia</th>
+        <th scope="col">Status</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      {{#if cards}}
+            {{#each cards}}
+            <tr>
+              <td>{{amount}}</td>
+              <td>{{start}}</td>
+              <td>{{end}}</td>
+              <td>{{status}}</td>
+              <td>
+                <a href="/admin/subcards{{actionLink}}">
+                {{actionMsg}}</a>
+                <a href="/admin/subcards{{removeLink}}">
+                {{removeMsg}}</a>
+              </td>
+            </tr>
+            {{/each}}
+      {{/if}}
+
+
+    </tbody>
+  </table>
+
+  </div>

@@ -1,0 +1,42 @@
+
+    <div class="col-lg-10">
+      {{#if errors }}
+{{#each errors}}
+<div class="alert alert-danger"> {{ msg }}</div>
+{{/each}}
+{{/if}}
+
+{{#if msg }}
+<div class="alert alert-success"> {{ msg }} </div>
+{{/if}}
+</div>
+</div>
+
+<div class="row">
+
+
+<!-- new gym form -->
+  <div class="col-md-6">
+    <div class="new-gym-card mdl-card mdl-shadow--6dp">
+    <div class="mdl-card__title">
+      <h2 class="mdl-card__title-text">New Gym - step {{ step }}</h2>
+    </div>
+    <div class="mdl-card__supporting-text">
+      <form method="post" action="/gym/new/step={{step}}">
+
+  {{#if inputs}}
+  {{#each inputs}}
+
+         <div class="form-group">
+          <label>{{ label }}</label>
+          <input type="{{type}}" class="{{className}}" placeholder="{{placeholder}}" name="{{name}}">
+        </div>
+
+
+        {{/each}}
+        {{/if}}
+      </form>
+    </div>
+  </div>
+  </div>
+</div>

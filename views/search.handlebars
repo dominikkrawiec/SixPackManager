@@ -1,0 +1,35 @@
+<div class="col-md-12">
+  <h3 class="page-header">Search</h3>
+</div>
+
+<section class="col-md-12">
+<div class="page-topbar">
+</div>
+<div class="home-card mdl-card mdl-shadow--2dp">
+  <div class="row">
+    <div class="col-md-12">
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Gym</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+
+    {{#if gyms}}
+          {{#each gyms}}
+          <tr>
+            <td>{{name}}</td>
+            <td><a href="/gym/{{_id}}">Details</a></td>
+          </tr>
+          {{/each}}
+    {{/if}}
+
+
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+</section>

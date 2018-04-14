@@ -12,10 +12,16 @@
 </div>
 </div>
 
+{{#if admin}}
 <div class="row">
+  <div class="col-md-12">
+    <a href="../admin"><div class="alert alert-success">Go to Admin panel >></div></a>
+  </div>
+
+  {{/if}}
 
   <!-- Edit profile -->
-  <div class="col-md-6">
+  <div class="col-md-12">
     <div class="registration-card mdl-card mdl-shadow--6dp">
     <div class="mdl-card__title">
       <h2 class="mdl-card__title-text">Edytuj profil</h2>
@@ -47,20 +53,4 @@
     </div>
   </div>
   </div>
-
-  <!-- Create Gym -->
-  <div class="col-md-5">
-    <div class="new-gym-card mdl-card mdl-shadow--6dp">
-      <div class="mdl-card__title">Are you a gym owner?</div>
-      <div class="mdl-card__supporting-text">
-        Create page for your gym and get attention!
-      </div>
-      <div class="mdl-card__actions mdl-card--border">
-        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" href="../gym/new">
-          Get Started
-        </a>
-      </div>
-  </div>
-  </div>
-
 </div>

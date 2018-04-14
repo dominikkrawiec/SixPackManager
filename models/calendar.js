@@ -7,6 +7,11 @@ var CalendarSchema = mongoose.Schema({
     type: String
   },
 
+  gymId : {
+    type: Schema.Types.ObjectId,
+		ref: 'Gym'
+  },
+
   name: {
     type: String
   },
@@ -41,24 +46,23 @@ var Calendar = module.exports = mongoose.model('Calendar', CalendarSchema);
 var EventRegistration = module.exports = mongoose.model('EventRegistration', EventRegistrationSchema, 'calendars');
 
 module.exports.newEvent = function(newEvent, callback){
-    Calendar.find({ eventId: newEvent.id }, function(err, event){
-      if(err) throw err;
 
-      if(!event.length){
           var singleEvent = new Calendar({
-            eventId: newEvent.id,
-            name: newEvent.title,
-            dataStart: newEvent.start,
-            description: newEvent.description
+            name: newEvent.name,
+            dataStart: newEvent.dataStart,
+            gymId: newEvent.gymId
+
           });
 
           singleEvent.save(callback);
-      }
-    });
+}
+
+module.exports.allEvents = function(callback){
+  Calendar.find({}).populate('gymId').exec(callback);
 }
 
 module.exports.findEvent = function(id, callback){
-  Calendar.find({eventId: id}, function(err, ev){
+  Calendar.find({_id: id}, function(err, ev){
     if(err) throw err;
 
     if(ev.length){
@@ -70,13 +74,15 @@ module.exports.findEvent = function(id, callback){
 
 module.exports.goingToEvent = function(event, user, callback){
 
-  var calendarId = Calendar.findOne({ eventId: event}, function(err, singleEvent){
-
-    EventRegistration.find({
+  var calendarId = Calendar.findOne({ _id: event}, function(err, singleEvent){
+    console.log(event);
+ EventRegistration.find({
       eventId: event,
       userId: user
     }, function(err, ev){
       if(err) throw err;
+
+      console.log(singleEvent);
 
         if(!ev.length){
           new EventRegistration({
@@ -144,3 +150,7 @@ module.exports.getEventsByUser = function(userId, callback) {
       callback(events);
     });
 };
+
+module.exports.removeEvent = function(id, callback) {
+  Calendar.remove({'_id' : id}, callback);
+}

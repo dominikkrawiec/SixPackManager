@@ -20,6 +20,7 @@ var karnety = require('./routes/karnety');
 var admin = require('./routes/admin');
 var payment = require('./routes/paypal');
 var calendar = require('./routes/calendar');
+var gym = require('./routes/gym');
 
 // Init App
 var app = express();
@@ -89,6 +90,7 @@ app.use('/karnety', karnety);
 app.use('/admin', admin);
 app.use('/payment', payment);
 app.use('/calendar', calendar);
+app.use('/gym', gym);
 
 // Set Port
 app.set('port', (process.env.PORT || 3000));

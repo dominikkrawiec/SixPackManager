@@ -103,13 +103,23 @@ router.get('/profile', function(req, res){
 	User.getUserById(req.user.id, function(err, data){
 		if(err) throw err;
 
+	if(data.username == 'admin'){
+		res.render('profile', {
+			username: data.username,
+			name: data.name,
+			password: data.password,
+			email: data.email,
+			admin: true
+		});
+
+	} else {
 		res.render('profile', {
 			username: data.username,
 			name: data.name,
 			password: data.password,
 			email: data.email
 		});
-
+	}
 
 	});
 });

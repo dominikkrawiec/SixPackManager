@@ -1,0 +1,68 @@
+<div class="col-md-12 topbar adminbar">
+  <nav class="mdl-navigation">
+    <a class="mdl-navigation__link" href="/admin">Admin Panel</a>
+    <a class="mdl-navigation__link" href="/admin/events">Manage Events</a>
+    <a class="mdl-navigation__link" href="/admin/subcards">Manage Subscriptions</a>
+    <a  class="mdl-navigation__link" href="/admin/gym/new/">New Gym</a>
+  </nav>
+
+  </ul>
+</div>
+
+<div class="col-md-12">
+  <h3 class="page-header">Karnety</h3>
+
+  <a href="../karnety/add" class="header-button">
+    <button class="btn btn-default">Add new</button>
+  </a>
+
+  <a href="../karnety/search" class="header-button">
+    <button class="btn btn-default">Search</button>
+  </a>
+</div>
+
+{{#if msg}}
+<div class="alert alert-success">
+  {{msg}}
+</div>
+  {{/if}}
+
+
+<div class="home-card mdl-card mdl-shadow--2dp">
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Kwota</th>
+      <th scope="col">Data Rozpoczęcia</th>
+      <th scope="col">Data Zakończenia</th>
+      <th scope="col">Status</th>
+      <th scope="col">User</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+
+    {{#if cards}}
+          {{#each cards}}
+          <tr>
+            <td>{{amount}}</td>
+            <td>{{start}}</td>
+            <td>{{end}}</td>
+            <td>{{status}}</td>
+            <td><a href="/admin/subcards/{{user.email}}">{{user.name}}</a></td>
+            <td>
+              <a href="/admin/subcards/activate/{{user._id}}/{{_id}}">
+            Activate</a>
+              <a href="/admin/subcards/remove/{{user._id}}/{{_id}}">
+            Remove</a>
+            </td>
+          </tr>
+          {{/each}}
+    {{/if}}
+
+
+  </tbody>
+</table>
+
+</div>

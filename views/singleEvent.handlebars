@@ -1,21 +1,33 @@
-<div class="page-topbar">
-  <h2 class="page-header">Event Details</h2>
 
   {{#if event }}
     {{#each event }}
-      {{#if status }}
-      <a href="../event/{{actionBtn}}/{{eventId}}" class="header-button">
-      <button class="btn btn-default">{{status}}</button>
-      </a>
-      {{/if}}
-</div>
 
+  <section class="col-md-12">
+    <div class="row">
+        <div class="col-md-9">
+          <div class="home-card mdl-card mdl-shadow--2dp">
+            <div class="row">
+              <div class="col-md-12">
+                <h1>  {{ name }} </h1>
+                  <div class="mdl-card__supporting-text">
+                    Start: {{ dataStart }} | {{description}}
+                  </div>
+              </div>
 
-   <h3>{{ name }}</h3>
-   <h4>{{ dataStart }}</h4>
-   <div>
-     {{description}}
-   </div>
-  {{/each}}
+              <div class="col-md-6">
+                    {{#if status }}
+                    <a href="../event/{{actionBtn}}/{{id}}" class="header-button">
+                    <button class="btn btn-default">{{status}}</button>
+                    </a>
+                    {{/if}}
+              </div>
+            </div>
 
-{{/if}}
+            </div>
+        </div>
+    </div>
+    </section>
+
+    {{/each}}
+
+  {{/if}}

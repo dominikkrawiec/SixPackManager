@@ -1,0 +1,45 @@
+<div class="col-md-12 topbar adminbar">
+  <nav class="mdl-navigation">
+    <a class="mdl-navigation__link" href="/admin">Admin Panel</a>
+    <a class="mdl-navigation__link" href="/admin/events">Manage Events</a>
+    <a class="mdl-navigation__link" href="/admin/subcards">Manage Subscriptions</a>
+    <a  class="mdl-navigation__link" href="/admin/gym/new/">New Gym</a>
+  </nav>
+
+  </ul>
+</div>
+
+<section class="col-md-12">
+<div class="page-topbar">
+  <h2 class="page-header">Events</h2>
+</div>
+<div class="home-card mdl-card mdl-shadow--2dp">
+  <div class="row">
+    <div class="col-md-12">
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Gyma</th>
+      <th scope="col">Start</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+
+    {{#if events}}
+          {{#each events}}
+          <tr>
+            <td>{{name}}</td>
+            <td>{{gymId.name}}</td>
+            <td>{{dataStart}}</td>
+            <td><a href="/admin/event/remove/{{_id}}">Remove</a></td>
+          </tr>
+          {{/each}}
+    {{/if}}
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+</section>

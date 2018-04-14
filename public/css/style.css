@@ -29,6 +29,21 @@ body {
   padding-left: 30px;
 }
 
+.user:hover > .profile-menu {
+  display: block;
+}
+
+.profile-menu {
+  position: absolute;
+  left: 90%;
+  top: 50px;
+  display: none;
+  background: white;
+  padding: 30px;
+  z-index: 99999;
+  border-radius: 15px;
+}
+
 .homebg {
   height: 350px;
   background-image: url('/img/homebg.jpg');
@@ -59,6 +74,37 @@ body {
 
 /* Dashboard */
 
+.events-card .mdl-card__title {
+  background-image: url('/img/events.jpg') !important;
+}
+
+.subs-card .mdl-card__title {
+  background-image: url('/img/subcards.jpg') !important;
+}
+
+.page-header {
+  padding: 50px 0;
+  margin: 0 !important;
+}
+
+.search-form {
+    background-image: url('/img/search-bg.png');
+    background-size: cover;
+    padding: 70px 0;
+  }
+
+  .search-form h2 {
+    text-align: center;
+    color: white;
+    margin-bottom: 20px;
+  }
+
+.page-header {
+  padding: 50px 30px !important;
+  text-align: center;
+  background-color: skyblue !important;
+}
+
 .topbar {
   height: 50px;
   background-color: white;
@@ -76,9 +122,110 @@ body {
     text-decoration: none;
   }
 
+  .header-button {
+    margin: 20px 0;
+    display: inline-block;
+  }
+
+  .adminbar {
+      background-color: #2ecc71;
+  }
+
+  .adminbar .mdl-navigation__link {
+    color: white !important;
+  }
+
+  .dashboard-card,
+  .stats-card {
+    width: 100% !important;
+    margin-top: 30px;
+  }
+
+  .stats-card {
+    background: #ffbe76 !important;
+    text-align: center;
+  }
+
+  .stats-card h4 {
+    color: white !important;
+    text-align: center;
+    width: 100%;
+  }
+
+  .mdl-card--border {
+    background-color: white !important;
+  }
+
+  .dashboard-card > .mdl-card__title {
+    background-color: #ffbe76;
+    color: white;
+    height: 100px;
+    background-size: cover;
+  }
+
+  .second-card-bg {
+    background: #34495e !important;
+  }
+
+  .dark-card {
+    background: #6610f2 !important;
+  }
+
+  .dashboard-description {
+    background-color: white !important;
+    width: 100% !important;
+  }
+
   .profile {
     position: absolute !important;
     right: 30px;
     top: 25px;
     color: white;
+  }
+
+  .form-section {
+    margin: 20px 0;
+  }
+
+  .next-step {
+    float: right;
+  }
+
+
+.error {
+  border: 5px solid red;
+}
+
+.home-card {
+  padding: 30px;
+}
+
+.subcard-search {
+  display: inline-block;
+width: 60%;
+padding: 5px;
+border-radius: 8px;
+border: 0px solid white;
+}
+
+.fc-basic-view .fc-body .fc-row {
+  height: 100px !important;
+}
+
+/* Single Gym */
+
+.sub-button {
+  position: absolute;
+  bottom: 30px;
+  right: 51px;
+}
+
+.gym-photo {
+  width: 200px;
+  height: 200px;
+  border-radius: 100%;
+}
+
+.subs-order button {
+  margin: 20px 0;
   }

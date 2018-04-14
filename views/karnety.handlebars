@@ -1,14 +1,13 @@
-<section class="col-md-10">
-<div class="page-topbar">
-  <h2 class="page-header">Karnety</h2>
-
-  <a href="../karnety/add" class="header-button">
-    <button class="btn btn-default">Add new</button>
-  </a>
+<div class="col-md-12">
+  <h3 class="page-header">Karnety</h3>
 </div>
 
-
-
+<section class="col-md-12">
+<div class="page-topbar">
+</div>
+<div class="home-card mdl-card mdl-shadow--2dp">
+  <div class="row">
+    <div class="col-md-12">
 <table class="table table-striped">
   <thead>
     <tr>
@@ -16,6 +15,7 @@
       <th scope="col">Data Rozpoczęcia</th>
       <th scope="col">Data Zakończenia</th>
       <th scope="col">Status</th>
+      <th scope="col">Silownia</th>
     </tr>
   </thead>
   <tbody>
@@ -27,6 +27,7 @@
             <td>{{start}}</td>
             <td>{{end}}</td>
             <td>{{status}}</td>
+            <td><a href="../gym/{{gymId._id}}">{{gymId.name}}</a></td>
           </tr>
           {{/each}}
     {{/if}}
@@ -34,5 +35,7 @@
 
   </tbody>
 </table>
-
+</div>
+</div>
+</div>
 </section>

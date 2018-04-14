@@ -9,7 +9,17 @@ router.get('/', ensureAuthenticated, function(req,res){
 
 	var eventsArray = [];
 
-	var events = GoogleCalendar(function(events){
+	Calendar.allEvents(function(err, events){
+		if(err) throw err;
+
+		res.render('calendar', {
+			events: events
+		});
+	});
+
+
+
+/*	var events = GoogleCalendar(function(events){
 
 		if(typeof events == 'object'){
 			events.forEach(function(el){
@@ -22,16 +32,17 @@ router.get('/', ensureAuthenticated, function(req,res){
 
 			});
 
-			res.render('calendar', {
-				events: events
-			});
+
 
 
 		} else {
 			res.render('calendar', { });
 		}
 
-	});
+	}); */
+
+
+
 });
 
 router.get('/event/:id', ensureAuthenticated, function(req, res){

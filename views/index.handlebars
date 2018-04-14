@@ -1,32 +1,53 @@
 
-  <section class="col-md-12">
-    <div class="home-card mdl-card mdl-shadow--2dp">
-      <div class="mdl-card__title">
-        <h2 class="page-header">Dashboard</h2>
-      </div>
+  <div class="col-md-12">
+    <form class="search-form row justify-content-md-center" method="post" action="/gym/search/">
+    <div class="col-md-12">
+        <h2>Search gym, buy subscriptions, follow events!</h2>
+    </div>
 
-      <div class="mdl-card__supporting-text">
-        <p>Welcome to your dashboard</p>
+    <div class="col-md-7">
+      <div class="form-group">
+        <input type="text" class="form-control" name="search" id="search" placeholder="Enter gym name" />
       </div>
-    </section>
-
-    <section class="col-md-5">
-      <h3>Subcription Cards</h3>
-      <p>
-        Lorem ipsum lorem ipsum.
-      </p>
-    </section>
+    </div>
+    <div class="col-md-1">
+        <button type="submit" class="btn btn-primary">Search</button></button>
+    </div>
+</form>
   </div>
 
 
-
-
-
-
-  <section class="col-md-5">
-    <h3>Your events</h3>
-    <p>
-      Lorem ipsum lorem ipsum.
-    </p>
-  </section>
+  <div class="col-md-6">
+    <div class="dashboard-card events-card mdl-card mdl-shadow--2dp">
+      <div class="mdl-card__title second-card-bg">
+        <h2 class="mdl-card__title-text">Events</h2>
+      </div>
+      <div class="mdl-card__supporting-text">
+      Check your calendar
+      </div>
+      <div class="mdl-card__actions mdl-card--border">
+        <a href="../calendar/personal" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+          Calendar
+        </a>
+      </div>
+  </div>
 </div>
+
+  <div class="col-md-6">
+      <div class="col-md-12">
+          <div class="dashboard-card subs-card  mdl-card mdl-shadow--2dp">
+            <div class="mdl-card__title second-card-bg">
+              <h2 class="mdl-card__title-text">Subscriptions</h2>
+            </div>
+        <div class="dashboard-description mdl-card__supporting-text">
+        Check your subscription cards
+        </div>
+        <div class="mdl-card__actions mdl-card--border">
+          <a  href="../karnety" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+            Subscriptions
+          </a>
+          <div class="mdl-layout-spacer"></div>
+        </div>
+      </div>
+      </div>
+  </div>

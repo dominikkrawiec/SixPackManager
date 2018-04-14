@@ -1,0 +1,47 @@
+<div class="col-md-6">
+  <div class="new-gym-card mdl-card mdl-shadow--6dp">
+  <div class="mdl-card__title">
+    <h2 class="mdl-card__title-text">New Event</h2>
+  </div>
+  <div class="mdl-card__supporting-text">
+
+<form method="POST" action="/admin/event/new/finish" data-step="1">
+  <section class="form-section" data-step="1">
+      <fieldset>
+        <label for="gyms">Gym</label>
+        <select id="gyms" name="gyms" class="form-control">
+          {{#if gyms}}
+                {{#each gyms}}
+                <option value={{id}} class="dropdown-item">
+                  {{name}}
+                </option>
+                {{/each}}
+          {{/if}}
+        </select>
+      </fieldset>
+    </section>
+
+                <section class="form-section hidden" data-step="2">
+                    <fieldset>
+                      <label for="name">Name</label>
+                      <input class="mdl-textfield__input" type="text" name="name" id="name" placeholder="Event's title here" required="required"  >
+                    </fieldset>
+                  </section>
+
+                  <section class="form-section hidden" data-step="3">
+                      <fieldset>
+                        <label for="date">Date</label>
+                        <input class="mdl-textfield__input" type="datetime-local" name="date" id="date" required="required">
+                      </fieldset>
+                    </section>
+
+                        <button type="submit" class="next-step mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored" id="newgym-btn">
+                          <i class="material-icons">forward</i>
+                        </button>
+                </form>
+              </div>
+            </div>
+            </div>
+          </div>
+
+          <script src="/js/newgym.js" ></script>
